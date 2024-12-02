@@ -4,6 +4,11 @@ import cn.duozai.entity.SysUser;
 
 import java.util.List;
 
+/**
+ * 用户表业务逻辑接口
+ *
+ * @author 多仔ヾ
+ */
 public interface SysUserService {
 
     /**

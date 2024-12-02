@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * description
+ * 用户表业务逻辑接口实现类
  *
  * @author 多仔ヾ
  */
