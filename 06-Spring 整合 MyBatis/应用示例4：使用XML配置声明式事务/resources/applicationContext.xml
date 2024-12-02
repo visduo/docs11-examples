@@ -1,0 +1,91 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 开启Spring IoC注解 -->
+    <context:component-scan base-package="cn.duozai"/>
+    <!-- 开启Spring AOP注解 -->
+    <aop:aspectj-autoproxy/>
+
+    <!-- SM整合-1、创建dbcp数据源：取代MyBatis的dataSource配置项 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <!-- 设值注入数据库配置，创建数据源Bean对象 -->
+        <!-- XML中注意特殊符号的处理，url中的“&”号 -->
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/cvs_db?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=Asia/Shanghai"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456.."/>
+    </bean>
+
+    <!-- SM整合-2、创建SqlSessionFactory：取代SqlSessionFactoryBuilder创建工厂 -->
+    <!-- SqlSessionFactoryBean：关联数据源并创建SqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 注入dbcp数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 注入MyBatis核心配置文件 -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!-- MyBatis其他核心配置项也可以在这里配置 -->
+    </bean>
+
+    <!-- SM整合-3、创建SqlSession：使用更高级的SqlSessionTemplate代替SqlSession -->
+    <!-- SqlSessionTemplate：关联sqlSessionFactory创建会话对象 -->
+    <!--
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+    -->
+
+    <!-- SM整合-3、使用MapperScannerConfigurer扫包生成Dao层实现类：取代MapperImpl -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.duozai.dao"/>
+    </bean>
+
+    <!-- 事务配置1-配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 注入数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--
+        事务配置2-设置事务属性
+        <tx:advice>元素节点：设置事务属性
+        id属性：事务属性配置名称
+        transaction-manager属性：关联的事务管理器，默认值为transactionManager
+    -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <!--
+            <tx:attributes>元素节点：设置一组事务属性
+            <tx:method>元素节点：针对某一些方法设置事务属性
+            name属性：匹配方法名称
+            propagation属性：事务传播属性，一般设置为REQUIRED
+            isolation属性：事务隔离级别
+        -->
+        <tx:attributes>
+            <tx:method name="update*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 事务配置3-定义事务切面 -->
+    <aop:config>
+        <!-- 定义切入点表达式 -->
+        <aop:pointcut id="pointcut" expression="execution(* cn.duozai.service..*.*(..))"/>
+        <!--
+            <aop:advisor>标签：定义事务切面
+            advice-ref属性：关联事务属性配置名称
+            pointcut-ref属性：关联切入点表达式
+        -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
+    </aop:config>
+
+</beans>
