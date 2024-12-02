@@ -1,0 +1,38 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="userDao" class="cn.duozai.dao.UserDaoImpl"/>
+    <bean id="userService" class="cn.duozai.service.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+    <!-- 声明增强方法所在的Bean，让Spring创建增强处理类对象，才能调用增强方法 -->
+    <bean id="userServiceLogger" class="cn.duozai.aop.UserServiceLogger"/>
+
+    <!-- <aop:config>标签：配置Spring AOP -->
+    <aop:config>
+        <!--
+            <aop:pointcut>标签：定义切入点，指定让哪些方法做增强操作
+            expression：使用execution指定切入点表达式
+        -->
+        <aop:pointcut id="pointcut" expression="execution(boolean save())"/>
+
+        <!--
+            <aop:aspect>标签：配置切面
+            ref属性：引用包含增强方法的Bean，即增强处理类对象
+            切面 = 切入点 + 增强处理
+        -->
+        <aop:aspect ref="userServiceLogger">
+            <!--
+                <aop:around>标签：定义环绕增强
+            -->
+            <aop:around method="around" pointcut-ref="pointcut"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

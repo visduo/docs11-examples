@@ -1,0 +1,20 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+        一般情况下：类型 对象名 = new 类型();
+        控制反转：通过<bean>标签声明需要Spring创建的实例，让Spring实例化对象
+        class属性：指定该对象实例的类型
+        id属性：该对象实例的名称
+    -->
+    <bean id="helloSpring" class="cn.duozai.HelloSpring">
+        <!--
+            实例化的过程中，给helloSpring对象设置name属性，即注入
+            <property>标签：调用set方法设置对象中的属性
+            name属性：对应的set方法，setXxx
+            value属性：要设置的值
+        -->
+        <property name="hello" value="反转的人生如此惊艳"/>
+    </bean>
+</beans>

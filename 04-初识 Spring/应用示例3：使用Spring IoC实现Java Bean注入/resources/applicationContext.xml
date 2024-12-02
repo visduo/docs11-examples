@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 定义A4纸的规格（bean对象） -->
+    <bean id="a4Paper" class="cn.duozai.A4Paper"/>
+
+    <!-- 定义B5纸的规格（bean对象） -->
+    <bean id="b5Paper" class="cn.duozai.B5Paper"/>
+
+    <!-- 定义彩色墨盒（bean对象） -->
+    <bean id="colorInk" class="cn.duozai.ColorInk"/>
+
+    <!-- 定义灰色墨盒（bean对象） -->
+    <bean id="grayInk" class="cn.duozai.GrayInk"/>
+
+    <!-- 组装打印机 -->
+    <bean id="printer" class="cn.duozai.Printer">
+        <!--
+            name属性：对应setXxx方法
+            ref属性：引用/注入已经定义好的Bean对象
+
+            注入墨盒和纸张
+        -->
+        <property name="ink" ref="colorInk"/>
+        <property name="paper" ref="a4Paper"/>
+    </bean>
+</beans>

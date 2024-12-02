@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="userDao" class="cn.duozai.dao.UserDaoImpl"/>
+    <bean id="userService" class="cn.duozai.service.UserServiceImpl">
+        <!-- <property>标签：依赖set方法进行注入，即set注入/设值注入 -->
+        <!-- <property name="userDao" ref="userDao"/> -->
+
+        <!--
+            <constructor-arg>：构造函数注入
+            name属性：构造函数的参数名
+            ref属性：引用spring容器中bean对象
+            value属性：构造函数的参数值
+        -->
+        <constructor-arg name="userDao" ref="userDao"/>
+    </bean>
+
+</beans>

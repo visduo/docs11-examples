@@ -1,0 +1,20 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="userDao" class="cn.duozai.dao.UserDaoImpl"/>
+    <!--
+        p命名空间注入和property本质上都是set注入，都需要提供set方法
+        property以标签的形式存在，p命名空间以属性的形式存在
+        p:xxx="值"
+        p:xxx-ref="引用对象"
+    -->
+    <bean id="userService" class="cn.duozai.service.UserServiceImpl"
+          p:userDao-ref="userDao"/>
+
+</beans>
