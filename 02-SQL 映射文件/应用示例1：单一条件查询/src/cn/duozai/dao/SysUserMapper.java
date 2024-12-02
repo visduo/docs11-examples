@@ -1,0 +1,39 @@
+package cn.duozai.dao;
+
+import cn.duozai.entity.SysUser;
+
+import java.util.List;
+
+/**
+ * 用户表数据访问接口
+ *
+ * @author 多仔ヾ
+ */
+public interface SysUserMapper {
+
+    /**
+     * 查询用户表记录数
+     *
+     * @return int
+     * @author 多仔ヾ
+     */
+    int count();
+
+    /**
+     * 查询用户列表
+     *
+     * @return java.util.List<cn.duozai.entity.SysUser>
+     * @author 多仔ヾ
+     */
+    List<SysUser> getUserList();
+
+    /**
+     * 根据真实姓名模糊匹配查询用户列表
+     *
+     * @param realName 真实姓名
+     * @return java.util.List<cn.duozai.entity.SysUser>
+     * @author 多仔ヾ
+     */
+    List<SysUser> getUserListByRealName(String realName);
+
+}

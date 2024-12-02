@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 1、引入数据库配置文件 -->
+    <properties resource="database.properties"/>
+
+    <!-- 3、配置MyBatis框架运行时行为 -->
+    <settings>
+        <!-- 配置日志实现为LOG4J -->
+        <setting name="logImpl" value="LOG4J"/>
+        <!-- 配置自动映射级别：即使没有进行手动映射，只要字段名与属性名一致，就能自动映射 -->
+        <setting name="autoMappingBehavior" value="FULL"/>
+        <!-- 配置驼峰自动转换：将字段xx_yy自动映射到属性xxYy -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <!-- 5、配置别名 -->
+    <typeAliases>
+        <!-- 指定别名 -->
+        <!-- <typeAlias type="cn.duozai.entity.SysUser" alias="sysuser"/> -->
+        <!-- 扫包自动设置别名 -->
+        <package name="cn.duozai.entity"/>
+    </typeAliases>
+
+    <!-- 2、配置MyBatis框架运行环境 -->
+    <environments default="development">
+        <environment id="development">
+            <!-- 配置事务信息 -->
+            <transactionManager type="JDBC"/>
+            <!-- 配置数据库信息 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${db_user}"/>
+                <property name="password" value="${db_password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 4、配置SQL映射文件 -->
+    <mappers>
+        <!-- 指定SQL映射文件 -->
+        <!-- <mapper resource="cn/duozai/dao/SysUserMapper.xml"/> -->
+        <!-- 扫包自动注册SQL映射文件 -->
+        <package name="cn.duozai.dao"/>
+    </mappers>
+</configuration>

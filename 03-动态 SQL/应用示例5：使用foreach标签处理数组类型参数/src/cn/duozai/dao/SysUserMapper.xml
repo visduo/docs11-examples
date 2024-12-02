@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    <mapper>标签：根标签
+    namespace属性：SQL映射文件的命名空间，保证全局唯一
+    namespace一般对应DAO接口的全限定名，即包+接口名
+-->
+<mapper namespace="cn.duozai.dao.SysUserMapper">
+    <!--
+        <select>标签：定义查询语句
+        id属性：SQL语句的标识符，在命名空间下唯一，一般对应DAO接口的方法名
+        resultType属性：SQL语句返回值类型/方法的返回值类型
+    -->
+    <select id="count" resultType="int">
+        SELECT COUNT(1) FROM t_sys_user
+    </select>
+
+    <!--
+        resultType属性：方法返回值为集合列表时，其取值为集合中元素的类型
+    -->
+    <select id="getUserList" resultType="cn.duozai.entity.SysUser">
+        SELECT * FROM t_sys_user
+    </select>
+
+    <!--
+    	parameterType属性：传入SQL语句的参数类型
+    	单一条件查询，使用#{参数名}获取方法传入的参数
+    	SQL映射文件中实现模糊查询，需要使用CONCAT函数做字符串拼接
+    -->
+    <select id="getUserListByRealName" resultType="cn.duozai.entity.SysUser" parameterType="string">
+        SELECT * FROM t_sys_user
+        WHERE realName LIKE CONCAT('%', #{realName}, '%')
+    </select>
+
+    <!-- 多条件查询实体类入参，使用#{实体类属性名}获取方法传入的参数 -->
+    <select id="getUserListBySysUser" resultType="cn.duozai.entity.SysUser" parameterType="cn.duozai.entity.SysUser">
+        SELECT * FROM t_sys_user
+        WHERE realName LIKE CONCAT('%', #{realName}, '%') AND roleId = #{roleId}
+    </select>
+
+    <!-- 多条件查询Map入参，使用#{Map-Key}获取方法传入的参数 -->
+    <select id="getUserListByMap" resultType="cn.duozai.entity.SysUser" parameterType="map">
+        SELECT * FROM t_sys_user
+        WHERE realName LIKE CONCAT('%', #{rName}, '%') AND roleId = #{rId}
+    </select>
+
+    <!--
+        多参数入参，使用#{param+参数序号}获取方法传入的参数
+        使用@Param注解给参数取别名时，使用使用#{参数别名}获取方法传入的参数
+        多参数入参时，不需要指定parameterType属性
+    -->
+    <select id="getUserListByParams" resultType="cn.duozai.entity.SysUser">
+        SELECT * FROM t_sys_user
+        <where>
+            <if test="realName != null">
+                AND realName LIKE CONCAT('%', #{realName}, '%')
+            </if>
+            <if test="rId != null">
+                AND roleId = #{rId}
+            </if>
+        </where>
+    </select>
+
+    <!--
+        <resultMap>标签：手动指定字段和属性之间的映射关系规则
+        id属性：映射规则的名称
+        type属性：将查询结果映射成哪一个Java实体类
+    -->
+    <resultMap id="userWithRoleName" type="cn.duozai.entity.SysUser">
+        <!--
+            <id>标签：映射主键字段
+            <result>标签：映射普通字段
+
+            property属性：实体类中的属性名
+            column属性：数据库中的字段名
+        -->
+        <id column="id" property="id"/>
+        <result column="roleName" property="userRoleName"/>
+    </resultMap>
+
+    <!--
+        resultMap属性：指定手动映射的规则
+        resultMap与resultType只能二选一
+    -->
+    <select id="getUserListWithRoleName" resultMap="userWithRoleName">
+        SELECT u.*, r.roleName FROM t_sys_user AS u, t_sys_role AS r
+        WHERE u.roleId = r.id
+    </select>
+
+
+    <resultMap id="userWithRole" type="cn.duozai.entity.SysUser">
+        <id property="id" column="id"/>
+        <!-- 不映射realName，查不到数据 -->
+        <!-- <result property="realName" column="realName"/> -->
+        <!--
+            在SysUser中嵌套了SysRole，需要把角色信息映射到SysUser中的SysRole
+            <association>标签：实现一对一关系映射
+            property属性：SysUser中嵌套的SysRole对象的属性名
+            javaType属性：SysUser中嵌套的SysRole对象的类型
+        -->
+        <association property="sysRole" javaType="cn.duozai.entity.SysRole">
+            <id property="id" column="rid"/>
+            <result property="roleName" column="roleName"/>
+            <result property="code" column="code"/>
+        </association>
+    </resultMap>
+    <select id="getUserListByRoleId" resultMap="userWithRole" parameterType="int">
+        SELECT u.*, r.id AS rid, r.`code`, r.roleName
+        FROM t_sys_user AS u, t_sys_role AS r
+        WHERE u.roleId = #{roleId} AND u.roleId = r.id
+    </select>
+
+    <resultMap id="userWithAddress" type="cn.duozai.entity.SysUser">
+        <id property="id" column="id"/>
+        <result property="realName" column="realName"/>
+        <!--
+            <collection>标签：实现一对多关系映射
+            property属性：SysUser中嵌套的地址列表集合的属性名
+            ofType属性：SysUser中嵌套的地址列表集合中的元素类型
+        -->
+        <collection property="addressList" ofType="cn.duozai.entity.Address">
+            <id property="id" column="aid"/>
+            <result property="addressDesc" column="addressDesc"/>
+            <result property="tel" column="tel"/>
+        </collection>
+    </resultMap>
+    <select id="getUserById" resultMap="userWithAddress" parameterType="int">
+        SELECT u.*, a.id AS aid, a.contact, a.addressDesc, a.postCode, a.tel
+        FROM t_sys_user AS u, t_address AS a
+        WHERE u.id = a.userId AND u.id = #{userId}
+    </select>
+
+    <insert id="add" parameterType="cn.duozai.entity.SysUser">
+        INSERT INTO t_sys_user(account, realName, password, sex, birthday, phone, address, roleId)
+        VALUES(#{account}, #{realName}, #{password}, #{sex}, #{birthday}, #{phone}, #{address}, #{roleId})
+    </insert>
+
+    <update id="updatePassword">
+        UPDATE t_sys_user SET password = #{newPassword}
+        WHERE id = #{userId}
+    </update>
+
+    <delete id="deleteUserById">
+        DELETE FROM t_sys_user WHERE id = #{userId}
+    </delete>
+
+    <select id="getUserListByChoose" resultType="cn.duozai.entity.SysUser">
+        SELECT * FROM t_sys_user
+        <where>
+            <choose>
+                <when test="account != null">
+                    AND account = #{account}
+                </when>
+                <when test="realName != null">
+                    AND realName LIKE CONCAT('%', #{realName}, '%')
+                </when>
+                <otherwise>
+                    AND roleId = #{rId}
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <select id="getUserListByRoleIdArray" resultType="cn.duozai.entity.SysUser">
+        <!--
+            拼接SQL语句：SELECT * FROM t_sys_user WHERE roleId in (1, 2, 3)
+        -->
+        SELECT * FROM t_sys_user WHERE roleId in
+        <foreach collection="roleIdsArray" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+</mapper>
