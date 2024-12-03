@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 开启Spring IoC注解 -->
+    <context:component-scan base-package="cn.duozai"/>
+    <!-- 开启Spring AOP注解 -->
+    <aop:aspectj-autoproxy/>
+
+    <!--
+        加载properties文件
+        PropertySourcesPlaceholderConfigurer：用于加载配置文件，注入到Spring容器中
+        location属性：properties配置文件的路径
+    -->
+    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="location" value="database.properties"/>
+    </bean>
+
+    <!-- SM整合-1、创建dbcp数据源：取代MyBatis的dataSource配置项 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <!-- 设值注入数据库配置，使用${key}取值 -->
+        <property name="driverClassName" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${db_user}"/>
+        <property name="password" value="${db_password}"/>
+    </bean>
+
+    <!-- SM整合-2、创建SqlSessionFactory：取代SqlSessionFactoryBuilder创建工厂 -->
+    <!-- SqlSessionFactoryBean：关联数据源并创建SqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 注入dbcp数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 注入MyBatis核心配置文件 -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!-- MyBatis其他核心配置项也可以在这里配置 -->
+    </bean>
+
+    <!-- SM整合-3、创建SqlSession：使用更高级的SqlSessionTemplate代替SqlSession -->
+    <!-- SqlSessionTemplate：关联sqlSessionFactory创建会话对象 -->
+    <!--
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+    -->
+
+    <!-- SM整合-3、使用MapperScannerConfigurer扫包生成Dao层实现类：取代MapperImpl -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.duozai.dao"/>
+    </bean>
+
+    <!-- 事务配置1-配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 注入数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 事务配置2-启用事务注解 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+</beans>

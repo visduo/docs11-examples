@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--
+        scope属性：Bean对象的作用域
+    -->
+    <bean id="userDao" class="cn.duozai.dao.UserDaoImpl" scope="prototype"/>
+
+    <!--
+        autowire属性：自动装配
+        byType：根据属性类型进行注入
+    -->
+    <bean id="userService" class="cn.duozai.service.UserServiceImpl" autowire="byType">
+        <!-- <property>标签：手动装配 -->
+        <!-- <property name="userDao" ref="userDao"/> -->
+    </bean>
+
+</beans>

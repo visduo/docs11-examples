@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 1、配置MyBatis框架运行时行为 -->
+    <settings>
+        <!-- 配置日志实现 -->
+        <setting name="logImpl" value="LOG4J"/>
+        <!-- 配置自动映射级别 -->
+        <setting name="autoMappingBehavior" value="FULL"/>
+    </settings>
+
+    <!-- 2、配置别名扫包 -->
+    <typeAliases>
+        <package name="cn.duozai.entity"/>
+    </typeAliases>
+
+    <!-- 3、配置MyBatis框架运行环境-配置MySQL数据源：交给Spring操作 -->
+
+    <!-- 4、配置SQL映射文件 -->
+    <mappers>
+        <package name="cn.duozai.dao"/>
+    </mappers>
+</configuration>
