@@ -19,7 +19,7 @@
     <!-- 开启Spring AOP注解 -->
     <aop:aspectj-autoproxy/>
 
-    <!-- SM整合-1、创建dbcp数据源：取代MyBatis的dataSource配置项 -->
+    <!-- SM整合1-创建dbcp数据源：取代MyBatis的dataSource配置项 -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <!-- 设值注入数据库配置，创建数据源Bean对象 -->
         <!-- XML中注意特殊符号的处理，url中的“&”号 -->
@@ -29,7 +29,7 @@
         <property name="password" value="123456.."/>
     </bean>
 
-    <!-- SM整合-2、创建SqlSessionFactory：取代SqlSessionFactoryBuilder创建工厂 -->
+    <!-- SM整合2-创建SqlSessionFactory：取代SqlSessionFactoryBuilder创建工厂 -->
     <!-- SqlSessionFactoryBean：关联数据源并创建SqlSessionFactory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 注入dbcp数据源 -->
@@ -39,7 +39,7 @@
         <!-- MyBatis其他核心配置项也可以在这里配置 -->
     </bean>
 
-    <!-- SM整合-3、创建SqlSession：使用更高级的SqlSessionTemplate代替SqlSession -->
+    <!-- SM整合3-创建SqlSession：使用更高级的SqlSessionTemplate代替SqlSession -->
     <!-- SqlSessionTemplate：关联sqlSessionFactory创建会话对象 -->
     <!--
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
@@ -47,7 +47,7 @@
     </bean>
     -->
 
-    <!-- SM整合-3、使用MapperScannerConfigurer扫包生成Dao层实现类：取代MapperImpl -->
+    <!-- SM整合3-使用MapperScannerConfigurer扫包生成Dao层实现类：取代MapperImpl -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="cn.duozai.dao"/>
     </bean>
