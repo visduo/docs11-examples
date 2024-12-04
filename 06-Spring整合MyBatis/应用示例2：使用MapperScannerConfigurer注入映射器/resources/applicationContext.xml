@@ -47,7 +47,7 @@
     </bean>
     -->
 
-    <!-- 3、使用MapperScannerConfigurer扫包生成Dao层实现类：取代MapperImpl -->
+    <!-- SM整合-3、使用MapperScannerConfigurer扫包生成Dao层实现类：取代MapperImpl -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="cn.duozai.dao"/>
     </bean>
