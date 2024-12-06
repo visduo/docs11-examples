@@ -20,7 +20,6 @@ public class SmTest {
     public void getUserList() {
         // 1、创建Spring容器上下文对象
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-
         // 2、从Spring容器中获取Service层的Bean对象
         SysUserService sysUserService = (SysUserService) context.getBean("sysUserServiceImpl");
         // 3、调用Service层方法操作数据库
