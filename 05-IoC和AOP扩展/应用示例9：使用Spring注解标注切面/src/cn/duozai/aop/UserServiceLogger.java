@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 
 /**
  * 日志增强处理类
- *
- * @author 多仔ヾ
  */
 @Aspect // 标记为切面类 = 切入点+增强处理
 @Component  // 标记为Bean对象，相当于<bean id="logger" class="cn.duozai.aop.UserServiceLogger"/>
@@ -21,8 +19,7 @@ public class UserServiceLogger {
      * 环绕增强
      *
      * @param jp 连接点对象，是JoinPoint的子接口
-     * @return java.lang.Object
-     * @author 多仔ヾ
+     * @return 方法返回值对象
      */
     @Around("execution(boolean save())")    // 标记环绕增强
     public Object around(ProceedingJoinPoint jp) {
