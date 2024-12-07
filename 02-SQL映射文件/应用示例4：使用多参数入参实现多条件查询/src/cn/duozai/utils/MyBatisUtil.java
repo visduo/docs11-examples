@@ -9,9 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * MyBatis 工具
- *
- * @author 多仔ヾ
+ * MyBatis工具类
  */
 public class MyBatisUtil {
 
@@ -21,8 +19,6 @@ public class MyBatisUtil {
      * 使用静态代码块唯一一次创建SqlSessionFactory实例
      * 静态代码块在类被加载时就会执行，且只执行一次
      * 无论创建多少个该类的对象，静态代码块都不会再次执行
-     *
-     * @author 多仔ヾ
      */
     static {
         try {
@@ -39,7 +35,7 @@ public class MyBatisUtil {
     /**
      * 创建并返回SqlSession实例
      *
-     * @author 多仔ヾ
+     * @return SqlSession实例
      */
     public static SqlSession createSqlSession() {
         return sqlSessionFactory.openSession();
@@ -48,8 +44,7 @@ public class MyBatisUtil {
     /**
      * 关闭SqlSession会话
      *
-     * @param sqlSession SqlSession
-     * @author 多仔ヾ
+     * @param sqlSession SqlSession实例
      */
     public static void closeSqlSession(SqlSession sqlSession) {
         if(sqlSession != null) {

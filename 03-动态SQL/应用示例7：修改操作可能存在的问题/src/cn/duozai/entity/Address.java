@@ -4,21 +4,37 @@ import java.io.Serializable;
 
 /**
  * 地址表实体类
- *
- * @author 多仔ヾ
  */
 public class Address implements Serializable {
 
+    /**
+     * 主键id
+     */
     private Integer id;
 
+    /**
+     * 联系人姓名
+     */
     private String contact;
 
+    /**
+     * 收货地址明细
+     */
     private String addressDesc;
 
+    /**
+     * 邮编
+     */
     private String postCode;
 
+    /**
+     * 联系人电话
+     */
     private String tel;
 
+    /**
+     * 用户id
+     */
     private Integer userId;
 
     public Integer getId() {

@@ -16,13 +16,16 @@ import java.util.Map;
 
 /**
  * 测试类
- *
- * @author 多仔ヾ
  */
 public class SysUserMapperTest {
 
     private static final Logger logger = Logger.getLogger(SysUserMapperTest.class);
 
+    /**
+     * 查询用户表记录数
+     *
+     * @return void
+     */
     @Test
     public void count() throws IOException {
         // 1、读取MyBatis核心配置文件的输入流
@@ -47,6 +50,9 @@ public class SysUserMapperTest {
         sqlSession.close();
     }
 
+    /**
+     * 查询用户列表
+     */
     @Test
     public void getUserList() throws IOException {
         InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
@@ -63,6 +69,11 @@ public class SysUserMapperTest {
         sqlSession.close();
     }
 
+    /**
+     * 查询用户表记录数-使用MyBatisUtil
+     *
+     * @return void
+     */
     @Test
     public void utilTest() {
         // 1、调用MyBatisUtil，创建SqlSession会话
@@ -78,6 +89,11 @@ public class SysUserMapperTest {
         MyBatisUtil.closeSqlSession(sqlSession);
     }
 
+    /**
+     * 根据真实姓名模糊查询用户列表
+     *
+     * @return void
+     */
     @Test
     public void getUserListByRealName() {
         SqlSession sqlSession = MyBatisUtil.createSqlSession();
@@ -92,6 +108,11 @@ public class SysUserMapperTest {
         MyBatisUtil.closeSqlSession(sqlSession);
     }
 
+    /**
+     * 根据条件（SysUser）查询用户列表
+     *
+     * @return void
+     */
     @Test
     public void getUserListBySysUser() {
         SqlSession sqlSession = MyBatisUtil.createSqlSession();
@@ -111,6 +132,11 @@ public class SysUserMapperTest {
         MyBatisUtil.closeSqlSession(sqlSession);
     }
 
+    /**
+     * 根据条件（Map）查询用户列表
+     *
+     * @return void
+     */
     @Test
     public void getUserListByMap() {
         SqlSession sqlSession = MyBatisUtil.createSqlSession();

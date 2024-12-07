@@ -5,28 +5,53 @@ import java.util.Date;
 
 /**
  * 用户表实体类
- *
- * @author 多仔ヾ
  */
 public class SysUser implements Serializable {
 
+	/**
+	 * 主键id
+	 */
 	private Integer id;
 
+	/**
+	 * 账号
+	 */
 	private String account;
 
-	private String password;
-
+	/**
+	 * 真实姓名
+	 */
 	private String realName;
 
-	private Integer roleId;
+	/**
+	 * 密码
+	 */
+	private String password;
 
-	private String phone;
-
-	private String address;
-
+	/**
+	 * 性别，1女/2男
+	 */
 	private Integer sex;
 
+	/**
+	 * 出生日期
+	 */
 	private Date birthday;
+
+	/**
+	 * 手机号码
+	 */
+	private String phone;
+
+	/**
+	 * 地址
+	 */
+	private String address;
+
+	/**
+	 * 用户角色id
+	 */
+	private Integer roleId;
 
 	public Integer getId() {
 		return id;
@@ -44,14 +69,6 @@ public class SysUser implements Serializable {
 		this.account = account;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public String getRealName() {
 		return realName;
 	}
@@ -60,12 +77,28 @@ public class SysUser implements Serializable {
 		this.realName = realName;
 	}
 
-	public Integer getRoleId() {
-		return roleId;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setRoleId(Integer roleId) {
-		this.roleId = roleId;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Integer getSex() {
+		return sex;
+	}
+
+	public void setSex(Integer sex) {
+		this.sex = sex;
+	}
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
 
 	public String getPhone() {
@@ -84,20 +117,12 @@ public class SysUser implements Serializable {
 		this.address = address;
 	}
 
-	public Integer getSex() {
-		return sex;
+	public Integer getRoleId() {
+		return roleId;
 	}
 
-	public void setSex(Integer sex) {
-		this.sex = sex;
-	}
-
-	public Date getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
 	}
 
 }

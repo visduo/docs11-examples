@@ -4,15 +4,22 @@ import java.io.Serializable;
 
 /**
  * 角色表实体类
- *
- * @author 多仔ヾ
  */
 public class SysRole implements Serializable {
 
+    /**
+     * 主键id
+     */
     private Integer id;
 
+    /**
+     * 角色编码
+     */
     private String code;
 
+    /**
+     * 角色名称
+     */
     private String roleName;
 
     public Integer getId() {

@@ -17,6 +17,7 @@
         SELECT COUNT(1) FROM t_sys_user
     </select>
 
+    <!-- 查询用户列表 -->
     <!--
         resultType属性：方法返回值为集合列表时，其取值为集合中元素的类型
     -->

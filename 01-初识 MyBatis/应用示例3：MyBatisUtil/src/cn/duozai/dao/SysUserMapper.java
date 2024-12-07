@@ -6,24 +6,20 @@ import java.util.List;
 
 /**
  * 用户表数据访问接口
- *
- * @author 多仔ヾ
  */
 public interface SysUserMapper {
 
     /**
      * 查询用户表记录数
      *
-     * @return int
-     * @author 多仔ヾ
+     * @return 用户表记录总数
      */
     int count();
 
     /**
      * 查询用户列表
      *
-     * @return java.util.List<cn.duozai.entity.SysUser>
-     * @author 多仔ヾ
+     * @return 用户列表
      */
     List<SysUser> getUserList();
 

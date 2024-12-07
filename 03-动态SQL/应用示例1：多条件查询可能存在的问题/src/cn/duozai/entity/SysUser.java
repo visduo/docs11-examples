@@ -6,37 +6,67 @@ import java.util.List;
 
 /**
  * 用户表实体类
- *
- * @author 多仔ヾ
  */
 public class SysUser implements Serializable {
 
+	/**
+	 * 主键id
+	 */
 	private Integer id;
 
+	/**
+	 * 账号
+	 */
 	private String account;
 
-	private String password;
-
+	/**
+	 * 真实姓名
+	 */
 	private String realName;
 
-	// 关联用户角色id
-	private Integer roleId;
+	/**
+	 * 密码
+	 */
+	private String password;
 
-	// 关联用户角色名称
-	// private String userRoleName;
-
-	// 关联用户角色实体对象
-	private SysRole sysRole;
-
-	private String phone;
-
-	private String address;
-
+	/**
+	 * 性别，1女/2男
+	 */
 	private Integer sex;
 
+	/**
+	 * 出生日期
+	 */
 	private Date birthday;
 
-	// 关联用户地址列表
+	/**
+	 * 手机号码
+	 */
+	private String phone;
+
+	/**
+	 * 地址
+	 */
+	private String address;
+
+	/**
+	 * 用户角色id
+	 */
+	private Integer roleId;
+
+	/**
+	 * 用户角色名称
+	 */
+	// private String userRoleName;
+
+	/**
+	 * 关联用户角色表实体类对象
+	 */
+	private SysRole sysRole;
+
+	/**
+	 * 关联用户地址列表
+	 */
 	private List<Address> addressList;
 
 	public Integer getId() {
@@ -55,14 +85,6 @@ public class SysUser implements Serializable {
 		this.account = account;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public String getRealName() {
 		return realName;
 	}
@@ -71,28 +93,12 @@ public class SysUser implements Serializable {
 		this.realName = realName;
 	}
 
-	public Integer getRoleId() {
-		return roleId;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setRoleId(Integer roleId) {
-		this.roleId = roleId;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Integer getSex() {
@@ -111,6 +117,38 @@ public class SysUser implements Serializable {
 		this.birthday = birthday;
 	}
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Integer getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
+	}
+
+//	public String getUserRoleName() {
+//		return userRoleName;
+//	}
+//
+//	public void setUserRoleName(String userRoleName) {
+//		this.userRoleName = userRoleName;
+//	}
+
 	public SysRole getSysRole() {
 		return sysRole;
 	}
@@ -126,4 +164,5 @@ public class SysUser implements Serializable {
 	public void setAddressList(List<Address> addressList) {
 		this.addressList = addressList;
 	}
+
 }
