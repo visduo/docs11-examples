@@ -17,7 +17,6 @@ public class HelloController {
 
     /**
      * 提供一个表单
-     * 限定请求方式为GET，请求路径为/index
      *
      * @return 模型视图对象
      */
