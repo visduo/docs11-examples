@@ -9,13 +9,16 @@ import java.util.List;
 
 /**
  * 测试类
- *
- * @author 多仔ヾ
  */
 public class SmTest {
 
     private static final Logger logger = Logger.getLogger(SmTest.class);
 
+    /**
+     * 查询用户列表
+     *
+     * @return void
+     */
     @Test
     public void getUserList() {
         // 1、创建Spring容器上下文对象
@@ -38,14 +41,17 @@ public class SmTest {
         }
     }
 
+    /**
+     * 根据用户id修改密码
+     *
+     * @return void
+     */
     @Test
     public void updatePassword() {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-
         SysUserService sysUserService = (SysUserService) context.getBean("sysUserServiceImpl");
 
         boolean result = sysUserService.updatePassword(1, "000111");
-
         if(result) {
             logger.debug("修改成功");
         } else {

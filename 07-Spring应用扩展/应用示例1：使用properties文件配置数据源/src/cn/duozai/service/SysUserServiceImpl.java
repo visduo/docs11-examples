@@ -10,28 +10,38 @@ import java.util.List;
 
 /**
  * 用户表业务逻辑接口实现类
- *
- * @author 多仔ヾ
  */
-// 将Service层实现类标记为Bean对象，交给Spring管理
-// 开启声明式事务
-@Transactional
+@Transactional  // 开启声明式事务
 @Service
 public class SysUserServiceImpl implements SysUserService {
 
-    // 从Spring容器中注入Dao层
+    /**
+     * 从Spring容器中注入依赖的Dao层对象
+     */
     @Resource
     SysUserMapper sysUserMapper;
 
+    /**
+     * 查询用户列表
+     *
+     * @return 用户列表
+     */
     @Override
     public List<SysUser> getUserList() {
         // Service层调用Dao层操作数据库
         return sysUserMapper.getUserList();
     }
 
+    /**
+     * 根据用户id修改密码
+     *
+     * @param id 用户id
+     * @param newPassword 新密码
+     * @return 修改结果
+     */
     @Override
-    public boolean updatePassword(Integer id, String password) {
-        int result = sysUserMapper.updatePassword(id, password);
+    public boolean updatePassword(Integer id, String newPassword) {
+        int result = sysUserMapper.updatePassword(id, newPassword);
 
         System.out.println(1/0);
         // 抛出异常，应该做事务回滚

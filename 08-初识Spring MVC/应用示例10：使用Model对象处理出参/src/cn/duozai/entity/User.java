@@ -2,15 +2,22 @@ package cn.duozai.entity;
 
 /**
  * 用户实体类
- *
- * @author 多仔ヾ
  */
 public class User {
 
+    /**
+     * 姓名
+     */
     private String name;
 
+    /**
+     * 年龄
+     */
     private Integer age;
 
+    /**
+     * 网址
+     */
     private String website;
 
     public String getName() {

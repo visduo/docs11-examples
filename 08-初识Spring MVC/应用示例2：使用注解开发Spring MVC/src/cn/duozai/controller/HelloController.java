@@ -6,8 +6,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Hello控制器
- *
- * @author 多仔ヾ
  */
 @Controller // 标记控制器类，将该类交给Spring管理
 public class HelloController {
@@ -17,8 +15,7 @@ public class HelloController {
      * @RequestMapping注解：指定请求路径为/hello
      * 访问/hello的时候，就会进入该方法
      *
-     * @return org.springframework.web.servlet.ModelAndView
-     * @author 多仔ヾ
+     * @return 模型视图对象
      */
     @RequestMapping(value = "/hello")
     public ModelAndView hello() {

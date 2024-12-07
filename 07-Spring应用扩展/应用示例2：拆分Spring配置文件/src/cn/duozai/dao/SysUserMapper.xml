@@ -8,8 +8,7 @@
     </select>
 
     <update id="updatePassword">
-        UPDATE t_sys_user
-        SET password = #{password}
-        WHERE id = #{id}
+        UPDATE t_sys_user SET password = #{newPassword}
+        WHERE id = #{userId}
     </update>
 </mapper>

@@ -4,8 +4,6 @@ import org.junit.Test;
 
 /**
  * 测试类
- *
- * @author 多仔ヾ
  */
 public class UserTest {
 

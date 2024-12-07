@@ -16,7 +16,6 @@ public class SpringTest {
     @Test
     public void test() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        // 使用@Service注解标记UserServiceImpl时，没有为其取名，其默认为类名首字母小写
         UserService userService = (UserService) applicationContext.getBean("userServiceImpl");
         userService.save();
     }

@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Hello控制器
- *
- * @author 多仔ヾ
  */
 @Controller
 public class HelloController {
@@ -21,8 +19,7 @@ public class HelloController {
     /**
      * 提供一个表单
      *
-     * @return java.lang.String
-     * @author 多仔ヾ
+     * @return 视图页面文件名称
      */
     @GetMapping("/index")
     public String index() {
@@ -37,13 +34,12 @@ public class HelloController {
      * @param model Model模型对象
      * @param name 视图页面表单传递的name参数
      * @param age 视图页面表单传递的age参数
-     * @return java.lang.String
-     * @author 多仔ヾ
+     * @return 视图页面文件名称
      */
     @PostMapping("/hello")
     public String hello(Model model,
-                       @RequestParam(name = "name") String name,
-                       @RequestParam(name = "age",required = false, defaultValue = "18") Integer age) {
+                        @RequestParam(name = "name") String name,
+                        @RequestParam(name = "age",required = false, defaultValue = "18") Integer age) {
         logger.debug("视图页面表单传递的姓名 => " + name);
         logger.debug("视图页面表单传递的年龄 => " + age);
 

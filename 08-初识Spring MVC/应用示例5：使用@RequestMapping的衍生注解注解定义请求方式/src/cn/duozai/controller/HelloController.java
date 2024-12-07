@@ -8,8 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Hello控制器
- *
- * @author 多仔ヾ
  */
 @Controller // 标记控制器类，将该类交给Spring管理
 @RequestMapping("/admin")   // 为控制器中的所有方法添加统一的前缀，所有请求路径必须以/admin开头
@@ -21,8 +19,7 @@ public class HelloController {
      * 且类请求路径+方法请求路径在整个项目中必须保证唯一性
      * @GetMapping注解等同于method = RequestMethod.GET
      *
-     * @return org.springframework.web.servlet.ModelAndView
-     * @author 多仔ヾ
+     * @return 模型视图对象
      */
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public ModelAndView hello() {
@@ -37,8 +34,7 @@ public class HelloController {
      * 可以通过/admin/h1和/admin/h2进行访问
      * @PostMapping注解等同于method = RequestMethod.POST
      *
-     * @return org.springframework.web.servlet.ModelAndView
-     * @author 多仔ヾ
+     * @return 模型视图对象
      */
     @PostMapping({"/h1", "/h2"})
     public ModelAndView hello2() {

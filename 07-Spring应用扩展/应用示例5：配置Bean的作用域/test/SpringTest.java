@@ -7,19 +7,19 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * 测试类
- *
- * @author 多仔ヾ
  */
 public class SpringTest {
 
     private static final Logger logger = Logger.getLogger(SpringTest.class);
 
+    /**
+     * Spring测试
+     *
+     * @return void
+     */
     @Test
     public void test() {
-        // 1、读取Spring配置文件，实例化Spring上下文对象
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        // 2、根据bean-id获取Bean对象实例
-        // 3、判断结果
 
         UserService userService1 = (UserService) applicationContext.getBean("userService");
         UserService userService2 = (UserService) applicationContext.getBean("userService");

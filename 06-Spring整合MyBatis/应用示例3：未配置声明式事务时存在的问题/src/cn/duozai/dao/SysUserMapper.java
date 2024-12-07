@@ -7,27 +7,23 @@ import java.util.List;
 
 /**
  * 用户表数据访问接口
- *
- * @author 多仔ヾ
  */
 public interface SysUserMapper {
 
     /**
      * 查询用户列表
      *
-     * @return java.util.List<cn.duozai.entity.SysUser>
-     * @author 多仔ヾ
+     * @return 用户列表
      */
     List<SysUser> getUserList();
 
     /**
-     * 根据用户id修改用户密码
+     * 根据用户id修改密码
      *
      * @param id 用户id
-     * @param password 新密码
-     * @return int
-     * @author 多仔ヾ
+     * @param newPassword 新密码
+     * @return SQL语句影响行数
      */
-    int updatePassword(@Param("id") Integer id, @Param("password") String password);
+    int updatePassword(@Param("userId") Integer id, @Param("newPassword") String newPassword);
 
 }

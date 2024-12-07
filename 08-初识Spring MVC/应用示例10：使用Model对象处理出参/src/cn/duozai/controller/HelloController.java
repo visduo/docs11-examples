@@ -11,8 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Hello控制器
- *
- * @author 多仔ヾ
  */
 @Controller
 public class HelloController {
@@ -23,8 +21,7 @@ public class HelloController {
      * 提供一个表单
      * 限定请求方式为GET，请求路径为/index
      *
-     * @return org.springframework.web.servlet.ModelAndView
-     * @author 多仔ヾ
+     * @return 模型视图对象
      */
     @GetMapping("/index")
     public ModelAndView index() {
@@ -33,17 +30,11 @@ public class HelloController {
 
     /**
      * 处理表单请求
-     * 限定请求方式为POST，请求路径为/hello
-     * @RequestParam(name = "参数名")，参数名对应表单元素的name属性
-     *
-     * 参数name必须传，如果没有传则报错
-     * 参数age可以不传，不传或传空值，则默认值为18
      *
      * @param model Model模型对象
      * @param name 视图页面表单传递的name参数
      * @param age 视图页面表单传递的age参数
-     * @return java.lang.String
-     * @author 多仔ヾ
+     * @return 视图页面文件路径
      */
     @PostMapping("/hello")
     public String hello(Model model,
