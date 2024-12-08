@@ -9,8 +9,6 @@ import java.util.List;
 
 /**
  * 测试类
- *
- * @author 多仔ヾ
  */
 public class SmTest {
 
