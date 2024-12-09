@@ -1,6 +1,7 @@
 package cn.duozai.dao;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Repository;
 
 /**
  * 用户模块数据访问接口实现类
@@ -9,6 +10,7 @@ import org.apache.log4j.Logger;
  * value属性：Bean对象的名称，默认为类名首字母小写
  * 相当于 <bean id="userDao" class="cn.duozai.dao.UserDaoImpl">
  */
+@Repository
 public class UserDaoImpl implements UserDao {
 
     private static final Logger logger = Logger.getLogger(UserDaoImpl.class);
