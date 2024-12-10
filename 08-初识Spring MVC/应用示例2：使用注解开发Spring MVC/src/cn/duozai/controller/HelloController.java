@@ -6,14 +6,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Hello控制器
+ *
+ * @Controller注解：标记为控制器Bean对象，即将该类交给Spring管理
  */
-@Controller // 标记控制器类，将该类交给Spring管理
+@Controller
 public class HelloController {
 
     /**
      * 处理/hello请求
-     * @RequestMapping注解：指定请求路径为/hello
-     * 访问/hello的时候，就会进入该方法
+     * @RequestMapping注解：指定请求信息映射
+     * value属性：指定请求路径
      *
      * @return 模型视图对象
      */

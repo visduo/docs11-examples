@@ -16,8 +16,7 @@ public class HelloController {
     private static final Logger logger = Logger.getLogger(HelloController.class);
 
     /**
-     * 提供一个表单
-     * 限定请求方式为GET，请求路径为/index
+     * 提供表单
      *
      * @return 模型视图对象
      */
@@ -28,8 +27,8 @@ public class HelloController {
 
     /**
      * 处理表单请求
-     * 限定请求方式为POST，请求路径为/hello
-     * @RequestParam(name = "参数名")，参数名对应表单元素的name属性
+     * @RequestParam注解：接收表单传递过来的参数
+     * name属性：对应表单元素的name属性，即参数名称
      *
      * @param name 视图页面表单传递的name参数
      * @param age 视图页面表单传递的age参数

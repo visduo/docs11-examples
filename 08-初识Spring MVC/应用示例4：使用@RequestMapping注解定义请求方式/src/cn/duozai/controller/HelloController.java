@@ -7,16 +7,21 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Hello控制器
+ *
+ * @Controller注解：标记为控制器Bean对象，即将该类交给Spring管理
+ * @RequestMapping注解：为控制器中的所有方法添加统一的请求路径前缀
+ * 访问控制器中的方法时，使用类请求路径+方法请求路径进行访问
+ * 请求路径在整个项目中必须保证唯一性
  */
-@Controller // 标记控制器类，将该类交给Spring管理
-@RequestMapping("/admin")   // 为控制器中的所有方法添加统一的前缀，所有请求路径必须以/admin开头
+@Controller
+@RequestMapping("/admin")
 public class HelloController {
 
     /**
-     * 访问该方法时，使用类请求路径+方法请求路径进行访问
-     * 即通过/admin/hello进行访问
-     * 且类请求路径+方法请求路径在整个项目中必须保证唯一性
-     * 使用method属性限定方法的请求方式是GET，此时不能通过POST访问这个方法
+     * 处理/hello请求
+     * @RequestMapping注解：指定请求信息映射
+     * value属性：指定请求路径
+     * method属性：指定请求方式，RequestMethod枚举
      *
      * @return 模型视图对象
      */
@@ -29,9 +34,7 @@ public class HelloController {
     }
 
     /**
-     * 指定多个请求路径
-     * 可以通过/admin/h1和/admin/h2进行访问
-     * 使用method属性限定方法的请求方式是POST，此时不能通过GET访问这个方法
+     * 处理/h1和/h2请求
      *
      * @return 模型视图对象
      */

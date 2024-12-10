@@ -16,7 +16,7 @@ public class HelloController {
     private static final Logger logger = Logger.getLogger(HelloController.class);
 
     /**
-     * 提供一个表单
+     * 提供表单
      *
      * @return 模型视图对象
      */
@@ -34,7 +34,7 @@ public class HelloController {
      */
     @PostMapping("/hello")
     public ModelAndView hello(@RequestParam(name = "name") String name,
-                              @RequestParam(name = "age",required = false, defaultValue = "18") Integer age) {
+                              @RequestParam(name = "age", required = false, defaultValue = "18") Integer age) {
         logger.debug("视图页面表单传递的姓名 => " + name);
         logger.debug("视图页面表单传递的年龄 => " + age);
 

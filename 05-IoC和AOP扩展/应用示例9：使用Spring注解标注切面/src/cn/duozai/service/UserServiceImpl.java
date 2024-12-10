@@ -1,17 +1,17 @@
 package cn.duozai.service;
 
 import cn.duozai.dao.UserDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
  * 用户模块业务逻辑接口实现类
+ *
+ * @Service注解：标记为Bean对象，即将该类交给Spring管理
  */
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Resource
+    @Resource	// 先根据名称注入，后根据类型注入
     UserDao userDao;
 
     /**
