@@ -168,8 +168,8 @@ public class SysUserMapperTest {
         List<SysUser> sysUserList = sqlSession.getMapper(SysUserMapper.class)
                 .getUserListByParams("刘", 2);
 
-        for (SysUser sysUser2 : sysUserList) {
-            logger.debug("SysUser => " + sysUser2.getRealName());
+        for (SysUser sysUser : sysUserList) {
+            logger.debug("SysUser => " + sysUser.getRealName());
         }
 
         MyBatisUtil.closeSqlSession(sqlSession);

@@ -171,8 +171,8 @@ public class SysUserMapperTest {
         List<SysUser> sysUserList = sqlSession.getMapper(SysUserMapper.class)
                 .getUserListByParams(null, 2);
 
-        for (SysUser sysUser2 : sysUserList) {
-            logger.debug("SysUser => " + sysUser2.getRealName());
+        for (SysUser sysUser : sysUserList) {
+            logger.debug("SysUser => " + sysUser.getRealName());
         }
 
         MyBatisUtil.closeSqlSession(sqlSession);
@@ -276,7 +276,7 @@ public class SysUserMapperTest {
         SqlSession sqlSession = MyBatisUtil.createSqlSession();
 
         int result = sqlSession.getMapper(SysUserMapper.class)
-                .updatePassword(17, "888999");
+                .updatePassword(12, "888999");
 
         if(result == 1) {
             logger.debug("用户密码修改成功");
@@ -301,7 +301,7 @@ public class SysUserMapperTest {
         SqlSession sqlSession = MyBatisUtil.createSqlSession();
 
         int result = sqlSession.getMapper(SysUserMapper.class)
-                .deleteUserById(17);
+                .deleteUserById(12);
 
         if(result == 1) {
             logger.debug("用户删除成功");

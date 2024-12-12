@@ -1,0 +1,34 @@
+.main .body .inner .search{background-color: #f6fafd;}
+.main .body .inner .search form{overflow: hidden;padding:10px 10px;}
+.main .body .inner .search form div{float: left;padding-right: 10px;}
+.main .body .inner .search form div input,
+.main .body .inner .search form div select{height: 35px;outline: none;border:1px solid #8ab2d5;border-radius: 5px;padding:0 5px;}
+.main .body .inner .search form div input{width: 150px;}
+.main .body .inner .search form div select{width: 100px;}
+.main .body .inner .search form div button,
+.main .body .inner .search form a{display: inline-block;width: 100px;height: 35px;border:2px solid #fff;box-shadow: 3px 5px 10px #00000030;border-radius: 5px;color:#fff;font-size: 18px;outline: none;padding:0;background:#87c212 url('../images/search.png') no-repeat 15px center;}
+.main .body .inner .search form div button:hover{background-color: #6a990d}
+.main .body .inner .search form div button:active,
+.main .body .inner .search form a:active{box-shadow: 0 0 5px 5px #00000050 inset;background-color: #6a990d;border-color:#00000050;}
+.main .body .inner .search form div button span,
+.main .body .inner .search form a span{display: block;width: 100%;height: 100%;line-height: 35px;box-shadow: 0 0 5px 5px #00000020 inset;padding-left:14px}
+.main .body .inner .search form a{background-color: #47acf1;text-align: center;float: right;}
+.main .body .inner .search form a:hover{background-color: #0778c5;}
+.main .body .inner .search form a:active{background-color: #0778c5;}
+.main .body .inner .search form a{background-image: url('../images/tianjia.png');}
+.main .body .inner table{width: 100%;text-align: center;border:1px solid #ccc;}
+.main .body .inner table tr:hover{background-color: #e9f9ca !important;}
+.main .body .inner table thead{line-height: 25px;background-color: #f6f7f9;}
+.main .body .inner table thead tr th{border-right:1px solid #ccc;}
+.main .body .inner table thead tr th:last-child{border:none;}
+.main .body .inner table tbody{font-size: 12px;}
+.main .body .inner table tbody tr:nth-child(even){background-color: #f6f7f9;}
+.main .body .inner table tbody a{padding:0 5px;}
+.main .body .inner table tbody td{display:table-cell; vertical-align:middle; padding: 6px 3px;}
+.main .body .inner .page{display: flex;justify-content: space-between;padding:10px 0;}
+.main .body .inner .page ul{display: flex;line-height: 30px;}
+.main .body .inner .page ul li{margin-right: 5px;padding:0 5px;}
+.main .body .inner .page ul li:hover{background-color: #c5063f;}
+.main .body .inner .page ul li:hover a{color:#fff;}
+.main .body .inner .page form input{width: 60px;margin:0 10px;outline: none;}
+.main .body .inner .page form button{margin:0 10px;width: 55px;padding:5px 0}

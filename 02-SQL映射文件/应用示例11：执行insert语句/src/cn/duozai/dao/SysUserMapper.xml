@@ -125,7 +125,7 @@
     </select>
 
     <insert id="add" parameterType="cn.duozai.entity.SysUser">
-        INSERT INTO t_sys_user(account, realName, password, sex, birthday, phone, address, roleId)
-        VALUES(#{account}, #{realName}, #{password}, #{sex}, #{birthday}, #{phone}, #{address}, #{roleId})
+        INSERT INTO t_sys_user(account, realName, password, sex, birthday, phone, roleId)
+        VALUES(#{account}, #{realName}, #{password}, #{sex}, #{birthday}, #{phone}, #{roleId})
     </insert>
 </mapper>

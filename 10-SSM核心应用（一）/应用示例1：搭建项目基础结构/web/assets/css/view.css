@@ -1,0 +1,5 @@
+.body .inner .view-box{border:1px dashed #3d4f1b;padding:30px;margin-top: 10px;}
+.body .inner .view-box div{display: flex;line-height: 2.5em;}
+.body .inner .view-box div h3{flex-basis: 150px;text-align: right;margin-right: 20px;}
+.body .inner .view-box div span{color:#bd644e}
+.body .inner .view-box div a{width: 100px;height: 30px;background: linear-gradient(to bottom, #83beea, #1957a0);border:none;text-align: center;line-height: 30px;outline: none; color:#fff;margin-left:170px;border-radius: 5px;margin-top:10px}

@@ -2,7 +2,6 @@ package cn.duozai.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 /**
  * 用户表实体类
@@ -45,11 +44,6 @@ public class SysUser implements Serializable {
 	private String phone;
 
 	/**
-	 * 地址
-	 */
-	private String address;
-
-	/**
 	 * 用户角色id
 	 */
 	private Integer roleId;
@@ -65,9 +59,19 @@ public class SysUser implements Serializable {
 	private SysRole sysRole;
 
 	/**
+	 * 证件照片
+	 */
+	private String certFile;
+
+	/**
 	 * 关联用户地址列表
 	 */
 	private List<Address> addressList;
+
+	/**
+	 * 工作证照片
+	 */
+	private String avatarFile;
 
 	public Integer getId() {
 		return id;
@@ -125,14 +129,6 @@ public class SysUser implements Serializable {
 		this.phone = phone;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public Integer getRoleId() {
 		return roleId;
 	}
@@ -141,13 +137,21 @@ public class SysUser implements Serializable {
 		this.roleId = roleId;
 	}
 
-//	public String getUserRoleName() {
-//		return userRoleName;
-//	}
-//
-//	public void setUserRoleName(String userRoleName) {
-//		this.userRoleName = userRoleName;
-//	}
+	public String getCertFile() {
+		return certFile;
+	}
+
+	public void setCertFile(String certFile) {
+		this.certFile = certFile;
+	}
+
+	public String getAvatarFile() {
+		return avatarFile;
+	}
+
+	public void setAvatarFile(String avatarFile) {
+		this.avatarFile = avatarFile;
+	}
 
 	public SysRole getSysRole() {
 		return sysRole;

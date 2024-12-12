@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>724便利店管理系统</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/public.css">
+    <link rel="stylesheet" href="../assets/css/list.css">
+</head>
+<body>
+<header>
+    <nav>
+        <h1>724便利店管理系统</h1>
+        <div>
+            <span>欢迎您，<b>[真实姓名]</b></span>
+            &emsp;
+            <a href="/index.html">首页</a>
+            <a href="/login.html">退出系统</a>
+        </div>
+    </nav>
+    <div class="time">
+        <span id="time"></span>
+        <span>为了保证正常使用，请使用IE10.0以上版本！</span>
+    </div>
+</header>
+<div class="main">
+    <aside>
+        <div>
+            <h1>菜单</h1>
+        </div>
+        <ul>
+            <li><a href="#">入库记录管理</a></li>
+            <li><a href="#">供货商管理</a></li>
+            <li><a href="/sysUser/list.html">用户管理</a></li>
+            <li><a href="#">角色管理</a></li>
+            <li><a href="#">修改密码</a></li>
+            <li><a href="/login.html">退出系统</a></li>
+        </ul>
+    </aside>
+    <div class="body">
+        <div class="inner">
+            <div class="bread">当前位置: <span>用户管理 >> 用户列表</span></div>
+            <div class="search">
+                <form action="#">
+                    <div>
+                        <label for="account">账号：</label>
+                        <input type="text" id="account" name="account">
+                    </div>
+                    <div>
+                        <label for="roleId">角色名称：</label>
+                        <select id="roleId" name="roleId">
+                            <option>--全部--</option>
+                            <option>管理员</option>
+                            <option>店长</option>
+                            <option>员工</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button type="submit"><span>查询</span></button>
+                    </div>
+                    <a href="/sysUser/add.html"><span>添加</span></a>
+                </form>
+            </div>
+            <table>
+                <thead>
+                <tr>
+                    <th>账号</th>
+                    <th>真实姓名</th>
+                    <th>角色名称</th>
+                    <th>性别</th>
+                    <th>手机号码</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>[账号]</td>
+                    <td>[真实姓名]</td>
+                    <td>[角色名称]</td>
+                    <td>[性别]</td>
+                    <td>[手机号码]</td>
+                    <td>
+                        <a href="view.html" class="view"><img src="/assets/images/view.png" alt=""></a>
+                        <a href="update.html" class="update"><img src="/assets/images/upd.png" alt=""></a>
+                        <a href="#" class="deleted"><img src="/assets/images/del.png" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>[账号]</td>
+                    <td>[真实姓名]</td>
+                    <td>[角色名称]</td>
+                    <td>[性别]</td>
+                    <td>[手机号码]</td>
+                    <td>
+                        <a href="view.html" class="view"><img src="/assets/images/view.png" alt=""></a>
+                        <a href="update.html" class="update"><img src="/assets/images/upd.png" alt=""></a>
+                        <a href="#" class="deleted"><img src="/assets/images/del.png" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>[账号]</td>
+                    <td>[真实姓名]</td>
+                    <td>[角色名称]</td>
+                    <td>[性别]</td>
+                    <td>[手机号码]</td>
+                    <td>
+                        <a href="view.html" class="view"><img src="/assets/images/view.png" alt=""></a>
+                        <a href="update.html" class="update"><img src="/assets/images/upd.png" alt=""></a>
+                        <a href="#" class="deleted"><img src="/assets/images/del.png" alt=""></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <nav class="page">
+                <div>当前第 1 页 / 共 1 页 / 共 1 条数据</div>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">上一页</a></li>
+                    <li><a href="#">下一页</a></li>
+                    <li><a href="#">末页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<footer>© 版权所有</footer>
+<script src="/assets/js/time.js"></script>
+</body>
+</html>
