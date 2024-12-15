@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 /**
  * 用户模块数据访问接口实现类
- *
  * @Repository注解：标记为Bean对象，即将该类交给Spring管理
  * value属性：Bean对象的名称，默认为类名首字母小写
  * 相当于 <bean id="userDao" class="cn.duozai.dao.UserDaoImpl">

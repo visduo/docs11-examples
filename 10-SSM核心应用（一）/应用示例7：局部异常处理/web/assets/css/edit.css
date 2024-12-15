@@ -1,0 +1,23 @@
+.body .inner .form-box{height: 100%;margin:10px;padding:30px;border:1px solid #9ac70f;}
+.body .inner .form-box form>div{display: flex;align-items: center;margin:10px 0;}
+.body .inner .form-box form>div label{flex-basis:200px;text-align: right;padding-right: 10px;}
+.body .inner .form-box form>div>input,
+.body .inner .form-box form>div select{flex-basis:270px;border:1px solid #4987c0;border-radius: 5px;outline: none;padding:3px 10px;height: 30px;margin-right: 10px;}
+.body .inner .form-box form>div span{font-size:12px;}
+.body .inner .form-box form>div span.fail{color:red;}
+.body .inner .form-box form>div span.info{color:#666;display: none;}
+.body .inner .form-box form>div span.success{display: none;}
+.body .inner .form-box form>div span img{height: 15px;vertical-align: middle;margin-right: 5px;}
+.body .inner .form-box form>div .radio-group{display: flex;}
+.body .inner .form-box form>div input:focus,
+.body .inner .form-box form>div select:focus{box-shadow: 0 0 6px 1px #00000040 inset;}
+.body .inner .form-box form>div [type='radio']{box-shadow: none !important;}
+.body .inner .form-box form>div input:focus~.info,
+.body .inner .form-box form>div select:focus~.info{display: inline;}
+.body .inner .form-box form>div input:focus~.fail,
+.body .inner .form-box form>div select:focus~.fail{display: none;}
+.body .inner .form-box form>div.btn-group{padding-left: 200px;padding-top:20px;}
+.body .inner .form-box form>div.btn-group button,
+.body .inner .form-box form>div.btn-group a{width: 100px;height: 30px;background: linear-gradient(to bottom, #83beea, #1957a0);border:none;text-align: center;line-height: 30px;outline: none; color:#fff;margin:0 10px;border-radius: 5px;}
+.body .inner .form-box form>div.btn-group button:hover,
+.body .inner .form-box form>div.btn-group a:hover{cursor: pointer;}

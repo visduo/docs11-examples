@@ -7,14 +7,18 @@ import org.springframework.stereotype.Service;
 
 /**
  * 用户模块业务逻辑接口实现类
- *
  * @Service注解：标记为Bean对象，即将该类交给Spring管理
  */
 @Service
 public class UserServiceImpl implements UserService {
 
+    /**
+     * Service定义对于DAO层的引用，从Spring中注入DAO
+     * @Autowired注解：注入类型为UserDao的Bean对象
+     * @Qualifier注解：注入名称为userDao的Bean对象
+     */
     @Autowired
-    @Qualifier("userDao")   // 注入名称为userDao的Bean对象
+    @Qualifier("userDao")
     UserDao userDao;
 
     /**

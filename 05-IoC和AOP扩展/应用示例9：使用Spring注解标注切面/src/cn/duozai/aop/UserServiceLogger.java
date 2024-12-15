@@ -8,9 +8,11 @@ import org.springframework.stereotype.Component;
 
 /**
  * 日志增强处理类
+ * @Aspect注解：标记为切面类 = 切入点+增强处理
+ * @Component注解：标记为Bean对象
  */
-@Aspect // 标记为切面类 = 切入点+增强处理
-@Component  // 标记为Bean对象，相当于<bean id="logger" class="cn.duozai.aop.UserServiceLogger"/>
+@Aspect
+@Component
 public class UserServiceLogger {
 
     private static final Logger logger = Logger.getLogger(UserServiceLogger.class);

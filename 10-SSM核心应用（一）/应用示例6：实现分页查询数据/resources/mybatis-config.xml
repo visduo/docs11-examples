@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 配置MyBatis框架运行时行为 -->
+    <settings>
+        <!-- 配置日志实现 -->
+        <setting name="logImpl" value="LOG4J"/>
+        <!-- 配置自动映射级别 -->
+        <setting name="autoMappingBehavior" value="FULL"/>
+    </settings>
+
+    <!-- 配置MyBatis插件 -->
+    <plugins>
+        <!-- 配置PageHelper分页插件拦截器 -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!-- 分页参数合理化：限定查询页码范围 -->
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
+
+    <!-- 配置SQL映射文件 -->
+    <mappers>
+        <package name="cn.duozai.dao"/>
+    </mappers>
+</configuration>

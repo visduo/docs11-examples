@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Hello控制器
- *
  * 控制器类继承AbstractController类，并重写handleRequestInternal方法
  */
 public class HelloController extends AbstractController {

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 /**
  * 用户模块业务逻辑接口实现类
- *
  * @Service注解：标记为Bean对象，即将该类交给Spring管理
  */
 @Service

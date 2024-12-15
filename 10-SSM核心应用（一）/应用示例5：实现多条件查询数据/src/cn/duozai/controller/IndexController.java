@@ -12,7 +12,7 @@ public class IndexController {
     /**
      * 首页
      *
-     * @return 首页视图页面名称
+     * @return 视图页面
      */
     @GetMapping(value = "/index")
     public String index() {

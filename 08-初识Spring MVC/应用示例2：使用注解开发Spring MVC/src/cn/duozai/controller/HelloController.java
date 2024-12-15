@@ -6,7 +6,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Hello控制器
- *
  * @Controller注解：标记为控制器Bean对象，即将该类交给Spring管理
  */
 @Controller

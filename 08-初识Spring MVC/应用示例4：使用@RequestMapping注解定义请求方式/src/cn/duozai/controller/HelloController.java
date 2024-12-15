@@ -7,7 +7,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Hello控制器
- *
  * @Controller注解：标记为控制器Bean对象，即将该类交给Spring管理
  * @RequestMapping注解：为控制器中的所有方法添加统一的请求路径前缀
  * 访问控制器中的方法时，使用类请求路径+方法请求路径进行访问

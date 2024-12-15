@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.duozai.dao.SysUserMapper">
+    <!--
+        用户表关联角色表，一对一关联
+        使用resultMap+association实现一对一关联关系映射
+    -->
+    <resultMap id="sysUserWithSysRole" type="cn.duozai.entity.SysUser">
+        <association property="sysRole" javaType="cn.duozai.entity.SysRole"/>
+    </resultMap>
+
+    <!-- 根据条件查询用户对象，包含角色信息 -->
+    <select id="selectOne" resultMap="sysUserWithSysRole">
+        SELECT u.*, r.code, r.roleName
+        FROM t_sys_user AS u, t_sys_role AS r
+        WHERE u.roleId = r.id
+        <if test="id != null">
+            AND u.id = #{id}
+        </if>
+        <if test="account != null">
+            AND u.account = #{account}
+        </if>
+        <if test="password != null">
+            AND u.password = #{password}
+        </if>
+    </select>
+
+    <!-- 根据条件查询用户列表，包含角色信息 -->
+    <select id="selectList" resultMap="sysUserWithSysRole">
+        SELECT u.*, r.code, r.roleName
+        FROM t_sys_user AS u, t_sys_role AS r
+        WHERE u.roleId = r.id
+        <if test="account != null">
+            AND u.account LIKE CONCAT('%', #{account}, '%')
+        </if>
+        <if test="roleId != null">
+            AND u.roleId = #{roleId}
+        </if>
+    </select>
+</mapper>

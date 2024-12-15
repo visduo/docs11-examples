@@ -10,8 +10,9 @@ import java.util.List;
 
 /**
  * 用户表业务逻辑接口实现类
+ * @Transactional注解：开启声明式事务
  */
-@Transactional  // 开启声明式事务
+@Transactional
 @Service
 public class SysUserServiceImpl implements SysUserService {
 
