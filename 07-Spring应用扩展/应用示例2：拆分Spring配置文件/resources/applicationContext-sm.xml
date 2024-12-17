@@ -28,9 +28,9 @@
     <!-- SM整合-1、创建dbcp数据源：取代MyBatis的dataSource配置项 -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <!-- 设值注入数据库配置，使用${key}取值 -->
-        <property name="driverClassName" value="${driver}"/>
-        <property name="url" value="${url}"/>
-        <property name="username" value="${db_user}"/>
+        <property name="driverClassName" value="${db_driver}"/>
+        <property name="url" value="${db_url}"/>
+        <property name="username" value="${db_username}"/>
         <property name="password" value="${db_password}"/>
     </bean>
 
