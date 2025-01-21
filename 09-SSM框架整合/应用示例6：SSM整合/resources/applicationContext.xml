@@ -37,12 +37,12 @@
         <property name="maxWait" value="${dbcp_maxWait}"/>
         <property name="removeAbandonedTimeout" value="${dbcp_removeAbandonedTimeout}"/>
         <property name="removeAbandoned" value="${dbcp_removeAbandoned}"/>
-        <property name= "testWhileIdle" value="true"/>
-        <property name= "testOnBorrow" value="false"/>
-        <property name= "testOnReturn" value="false"/>
-        <property name= "validationQuery" value="select 1"/>
-        <property name= "timeBetweenEvictionRunsMillis" value="60000"/>
-        <property name= "numTestsPerEvictionRun" value="${dbcp_maxActive}"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="validationQuery" value="select 1"/>
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+        <property name="numTestsPerEvictionRun" value="${dbcp_maxActive}"/>
     </bean>
 
     <!-- 创建SqlSessionFactory -->
